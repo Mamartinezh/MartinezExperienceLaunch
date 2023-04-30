@@ -1,0 +1,87 @@
+
+
+:root {
+	--font-color: #fff;
+	--ok-color: #a2d4a8;
+	--error-color: #ed4337;
+}
+
+.button-container {
+	--p: 10px 20px;
+	border-radius: 40px;
+	background: #6487d9;
+	overflow: hidden;
+	align-self: center;
+	justify-self: center;
+}
+
+.query-button p {
+	color: var(--font-color);
+	font-size: 1.1rem;
+}
+
+.query-button i {
+	color: inherit;
+}
+
+.query-button {
+	border-radius: inherit;
+	padding: var(--p);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	transition: all 0.5s;
+	cursor: pointer;
+	font-weight: 900;
+	min-width: 100%;
+}
+
+.query-button [class*='query-data'] {
+	display: none;
+}
+
+.query-button.waiting [class*='spinner'] {
+	color: var(--font-color);
+	display: inline-block;
+	animation: animSpinner 2s infinite linear;
+}
+
+.query-button.waiting,
+.query-button.false,
+.query-button.true {
+	padding: 10px;
+}
+
+.query-button.waiting *:not([class*='query-data']),
+.query-button.true *:not([class*='query-data']), 
+.query-button.false *:not([class*='query-data']) {
+	display: none;
+}
+
+.query-button.true [class*='check'],
+.query-button:not(.waiting).false [class*='rotate'] {
+	color: var(--font-color);
+	display: inline-block;
+}
+
+.query-button.true {
+	background: var(--ok-color);
+}
+
+.query-button:not(.waiting).false {
+	background: var(--error-color);
+}
+
+a {
+	color: var(--ok-color);
+}
+
+@keyframes animSpinner {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

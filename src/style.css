@@ -1,0 +1,112 @@
+
+
+* {
+	user-select: none;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto Mono', monospace;
+}
+
+body,
+.webgl {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: #252525;
+}
+
+.onload-div {
+    top: 0;
+    right: 0;
+    color: #fff;
+    left: 0px;
+    margin: auto;
+    height: 30px;
+    bottom: calc(var(--n) * -60px + var(--t) * 0.5 * 60px);
+    position: fixed;
+    overflow: hidden;
+    font-size: 1.5rem;
+    width: max-content;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.onload-text {
+    top: 40px;
+    display: inline;
+    position: relative;
+    height: min-content;
+    transition: top 0.5s;
+    animation: animateText 0.5s calc(var(--id) * 0.05s + var(--total) * 0.05s) forwards;
+}
+
+.onload-text.reverse {
+    top: 0px;
+    animation: animateTextReverse 0.5s calc(var(--id) * 0.05s) forwards;
+}
+
+.click-hint {
+	position: fixed;
+	right: 0;
+	left: 0;
+	text-align: center;
+	margin: auto;
+	bottom: 50px;
+	color: #fff;
+	font-size: 1.2rem;
+	opacity: 0;
+	transition: opacity 2s;
+}
+
+.hide {
+	opacity: 0;
+}
+
+.active {
+	opacity: 1;
+}
+
+@keyframes animateText {
+    0% {
+        top: 40px;
+    }
+    60% {
+        top: -7.5px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+@keyframes animateTextReverse {
+    0% {
+        top: 0px;
+    }
+    40% {
+        top: -7.5px;
+    }
+    100% {
+        top: 30px;
+    }
+}
+
+@media only screen and (max-width:  400px) {
+	.onload-div {
+		font-size: 1.3rem;
+	}
+	.click-hint {
+		font-size: 1.0rem;
+	}
+}
+
+@media only screen and (max-width:  320px) {
+	.onload-div {
+		font-size: 1.1rem;
+	}
+	.click-hint {
+		font-size: 0.9rem;
+	}
+}

@@ -1,0 +1,82 @@
+
+
+.buttons-div {
+	left: 0;
+	right: 0;
+	width: 60%;
+	margin: auto;
+	bottom: 20px;
+	padding: 20px;
+	display: flex;
+	color: #948b84;
+	position: fixed;
+	max-width: 300px;
+	min-width: 220px;
+	border-radius: 10px;
+	background: #151515;
+	flex-direction: column;
+	min-height: max-content;
+	justify-content: space-between;
+	transition: opacity 2s;
+	opacity: 0;
+}
+
+.buttons-div.active {
+	opacity: 1;
+}
+
+.custom-button {
+	gap: 5px;
+	display: grid;
+	min-height: max-content;
+	justify-items: space-between;
+}
+
+.custom-button.hide {
+	display: none;
+}
+
+.button-head {
+	gap: 10px;
+	height: 40px;
+	display: flex;
+	font-weight: 900;
+	font-size: 1.1rem;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer
+}
+
+.hiden-content {
+	display: none;
+	height: max-content;
+}
+
+.hiden-content.true {
+	opacity: 1;
+	display: grid;
+	gap: 10px;
+	font-size: 0.9rem;
+	text-align: center;
+	height: max-content;
+	justify-items: center;
+	place-content: center;
+	transition: opacity 0.4s;
+}
+
+.confirm-buttons {
+	display: flex;
+	gap: 15px;
+}
+
+@media only screen and (max-width:  350px) {
+
+	.button-head {
+		font-size: 0.9rem;
+	}
+
+	.hiden-content {
+		font-size: 0.8rem;
+	}
+
+}
