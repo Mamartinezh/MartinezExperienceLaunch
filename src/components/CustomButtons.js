@@ -88,9 +88,9 @@ const init = [
 		content: ['Miércoles 10 de mayo del 2023', '6:00 P.M. a 11:00 P.M.']
 	},
 	{
-		label: 'Siguenos',
+		label: 'Síguenos',
 		icon: <i className="fa-solid fa-users"></i>,
-		content: ['Siguenos en nuestras redes:'],
+		content: ['Síguenos en nuestras redes:'],
 		iconLinks: [
 			<i key='ig' className="fa-brands fa-instagram" onClick={e=>window.open('https://www.instagram.com/martinezexperience/?igshid=YmMyMTA2M2Y%3D')} />,
 			<i key='fb' className="fa-brands fa-facebook-f" onClick={e=>window.open('https://www.facebook.com/casamartinezeventos')} />
@@ -100,7 +100,7 @@ const init = [
 		label: 'Apoyan',
 		icon: <i className="fa-solid fa-money-check-dollar"></i>,
 		content: [],
-		images: ['./images/free.png', '/images/carnisseria-1.png', './images/comunicadores-antioquia.png', './images/dislicores-2.png', './images/easyfly.png', './images/german-express.png', './images/periodistas-antioquia.png']
+		images: ['./images/free.png', '/images/carnisseria-1.png', './images/easyfly.png', './images/dislicores-2.png', './images/comunicadores-antioquia.png', './images/german-express.png', './images/periodistas-antioquia.png']
 
 	},
 	{
