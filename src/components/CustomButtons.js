@@ -100,7 +100,7 @@ const init = [
 		label: 'Apoyan',
 		icon: <i className="fa-solid fa-money-check-dollar"></i>,
 		content: [],
-		images: ['./images/free.png', '/images/carnisseria-1.png', './images/easyfly.png', './images/dislicores-2.png', './images/comunicadores-antioquia.png', './images/german-express.png', './images/periodistas-antioquia.png']
+		images: ['./images/free.png', './images/mobilia.png', '/images/carnisseria-1.png', './images/easyfly.png', './images/dislicores-2.png', './images/comunicadores-antioquia.png', './images/german-express.png', './images/periodistas-antioquia.png']
 
 	},
 	{
