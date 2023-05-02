@@ -19,6 +19,7 @@
 	justify-content: space-between;
 	transition: opacity 2s;
 	opacity: 0;
+	/*display: none;*/
 }
 
 .buttons-div.active {
@@ -67,6 +68,22 @@
 .confirm-buttons {
 	display: flex;
 	gap: 15px;
+}
+
+.images-container, .icons-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	width: 100%;
+}
+
+.images-container img {
+	width: 100%;
+}
+
+.hiden-content i {
+	font-size: 2rem;
+	cursor: pointer;
 }
 
 @media only screen and (max-width:  350px) {

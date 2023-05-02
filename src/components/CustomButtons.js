@@ -20,7 +20,7 @@ export default function CustomButtons({show=true, buttons=init}) {
 
 	return (
 		<div 
-			style={{height: `${buttons.length * 40 + 40}px`}}
+			// style={{minHeight: `${buttons.length * 40 + 40}px`}}
 			className={`buttons-div ${show?'active':''}`}>
 			{buttons.map((button, idx)=>
 				<div key={idx} className={`custom-button ${shown!==null?shown!==idx?'hide':'':''}`}>
@@ -47,6 +47,22 @@ export default function CustomButtons({show=true, buttons=init}) {
 								}
 							</div>
 						}
+						{button.images && 
+							<div className='images-container'>
+								{
+									button.images.map(src=>
+										<img key={src} src={src} />
+									)
+								}
+							</div>
+						}
+						{button.iconLinks && 
+							<div className='icons-container'>
+							{button.iconLinks.map(link=>
+								{return link}
+							)}
+							</div>
+						}
 					</div>
 				</div>
 			)}
@@ -60,7 +76,7 @@ const init = [
 	{
 		label: 'Lugar',
 		icon: <i className="fa-solid fa-map-location"></i>,
-		content: ['Carrera 43A N 14-143', 'Unión Israelita de Beneficiencia'],
+		content: ['Carrera 43A N 14-143', 'El Poblado, Medellín'],
 		link: {
 			label: 'Ve en google maps',
 			url: 'https://www.google.com/maps/place/Union+Israelita+de+Beneficencia/@6.2166814,-75.5703348,15z/data=!4m6!3m5!1s0x8e44282d9460dce1:0xa8f12c61bcf106c!8m2!3d6.2166814!4d-75.5703348!16s%2Fg%2F11csrwjndb'
@@ -72,9 +88,29 @@ const init = [
 		content: ['Miércoles 10 de mayo del 2023', '6:00 P.M. a 11:00 P.M.']
 	},
 	{
+		label: 'Redes',
+		icon: <i className="fa-solid fa-users"></i>,
+		content: ['Siguenos en nuestras redes:'],
+		iconLinks: [
+			<i key='ig' className="fa-brands fa-instagram" onClick={e=>window.open('https://www.instagram.com/martinezexperience/?igshid=YmMyMTA2M2Y%3D')} />,
+			<i key='fb' className="fa-brands fa-facebook-f" onClick={e=>window.open('https://www.facebook.com/casamartinezeventos')} />
+		]
+	},
+	{
+		label: 'Patrocina',
+		icon: <i className="fa-solid fa-money-check-dollar"></i>,
+		content: [],
+		images: ['/images/carnisseria-1.png', './images/comunicadores-antioquia.png', './images/dislicores-2.png', './images/easyfly.png', './images/periodistas-antioquia.png']
+
+	},
+	{
 		label: 'Confirmar',
 		icon: <i className="fa-solid fa-clipboard-check"></i>,
 		content: ['Asistiras al lanzamiento?'],
-		isConfirm: true
+		// isConfirm: true
+		link: {
+			label: <i className="fa-brands fa-whatsapp"></i>,
+			url: 'https://wa.link/92lg6e'
+		}
 	}	
 ]

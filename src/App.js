@@ -46,7 +46,7 @@ export default function App() {
 					zoom: 450,
 					position: [
 					2.8 * Math.sin(45 * Math.PI / 180),
-					2,
+					1.5 + 0.5,
 					2.8 * Math.cos(45 * Math.PI / 180),
 					]
 				}}

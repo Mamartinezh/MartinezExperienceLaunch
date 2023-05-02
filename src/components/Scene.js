@@ -1,6 +1,6 @@
 
 import { useFrame, useThree } from '@react-three/fiber'
-import { MeshBasicMaterial, LoopOnce, SRGBColorSpace } from 'three'
+import { MeshBasicMaterial, LoopOnce, SRGBColorSpace, DoubleSide } from 'three'
 import { useGLTF, useTexture, useAnimations } from '@react-three/drei'
 import { useRef, useEffect, useState, Suspense, primitive } from 'react'
 import { useClientContext } from '../contexts/client/ClientState'
@@ -9,6 +9,7 @@ import { useClientContext } from '../contexts/client/ClientState'
 export default function Scene({onLoad, startAnim, onAnim}) {
 
 	const control = useRef()
+	const sceneY0 = useRef(0)
 	const elapsed = useRef(0)
 	const mainGroup = useRef()
 	const floorShadow = useRef()
@@ -25,11 +26,10 @@ export default function Scene({onLoad, startAnim, onAnim}) {
 	    }
 
 	    elapsed.current += delta
-	    mainGroup.current.position.y = 0.2 + Math.sin(elapsed.current) * 0.05
-	    mainGroup.current.position.y = 0.2 + Math.sin(elapsed.current) * 0.05
+	    mainGroup.current.position.y = sceneY0.current + Math.sin(elapsed.current) * 0.05
 
 	    if (!floorShadow.current || !startAnim || floorShadow.current.scale.x < 0.5) return
-	    floorShadow.current.position.y = -0.2 - Math.sin(elapsed.current) * 0.05
+	    floorShadow.current.position.y = -sceneY0.current - Math.sin(elapsed.current) * 0.05
 		let scale = 1 - Math.sin(elapsed.current) * 0.05
 		floorShadow.current.scale.set(scale, scale, scale)
 
@@ -58,7 +58,7 @@ export default function Scene({onLoad, startAnim, onAnim}) {
 		const leafsMaterial = new MeshBasicMaterial({color: '#7e638a'})
 		const justBlackMaterial = new MeshBasicMaterial({color: '#000'})
 		const shadowsMaterial = new MeshBasicMaterial({alphaMap, color:'#000', transparent: true})
-		const bakedMaterial = new MeshBasicMaterial({map: bakedMap})
+		const bakedMaterial = new MeshBasicMaterial({map: bakedMap, side: DoubleSide})
 
 		let children = [...model.scene.children]
 		children.forEach(child=>{
@@ -78,12 +78,20 @@ export default function Scene({onLoad, startAnim, onAnim}) {
 	}, [startAnim])
 
 	useEffect(()=>{
+		let zoom, zoomH, zoomV
 		if (sizes.current.width < 750) {
-			let zoom = sizes.current.width / (Math.sqrt(2) + 0.5)
-			camera.zoom = zoom
-			camera.updateProjectionMatrix()
+			zoomH = sizes.current.width / (Math.sqrt(2) + 0.5)
 		}		
-	}, [sizes.current.width])
+		if (sizes.current.height < 2000) {
+			zoomV = (sizes.current.height - 210) / 1.6357
+		}
+		zoom = zoomH?zoomV?zoomH<zoomV?zoomH:zoomV:zoomH:zoomV?zoomV:null
+		if (!zoom) return
+		camera.zoom = zoom
+		let factor = sizes.current.height / (sizes.current.height - 210) 
+		sceneY0.current = 180 * 0.5 * factor * 1.6357 / (sizes.current.height * 2.8 / Math.sqrt(2.8**2+1.5**2))
+		camera.updateProjectionMatrix()
+	}, [sizes.current])
 
 	const runAnimations = () =>{
 		let maxDur = 0
@@ -103,6 +111,7 @@ export default function Scene({onLoad, startAnim, onAnim}) {
 	return (
 		<>
 			<group ref={ mainGroup }>
+				<ambientLight intensity={1} />
 				<Suspense>
 					<primitive object={model.scene} />
 				</Suspense>
