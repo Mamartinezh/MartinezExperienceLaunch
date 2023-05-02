@@ -97,16 +97,16 @@ const init = [
 		]
 	},
 	{
-		label: 'Patrocina',
+		label: 'Apoyan',
 		icon: <i className="fa-solid fa-money-check-dollar"></i>,
 		content: [],
-		images: ['/images/carnisseria-1.png', './images/comunicadores-antioquia.png', './images/dislicores-2.png', './images/easyfly.png', './images/periodistas-antioquia.png']
+		images: ['/images/carnisseria-1.png', './images/comunicadores-antioquia.png', './images/dislicores-2.png', './images/easyfly.png', './images/free.png', './images/periodistas-antioquia.png']
 
 	},
 	{
 		label: 'Confirmar',
 		icon: <i className="fa-solid fa-clipboard-check"></i>,
-		content: ['Asistiras al lanzamiento?'],
+		content: ['Confirma tu asistencia en el', 'siguiente link'],
 		// isConfirm: true
 		link: {
 			label: <i className="fa-brands fa-whatsapp"></i>,
