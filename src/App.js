@@ -14,7 +14,7 @@ export default function App() {
 	const [ animDone, setAnimDone ] = useState(false)
 	const [ hideText, setHideText ] = useState(false)
 	const [ hasClicked, setHasCliked ] = useState(false)
-	const [ onLoadText, setOnLoadText ] = useState('¡Estas invitado-al lanzamiento de-Martínez Experience!')
+	const [ onLoadText, setOnLoadText ] = useState('¡Estás invitado-al lanzamiento de-Martínez Experience!')
 
 	const showText = () => {
 		setIsLoaded(true)
